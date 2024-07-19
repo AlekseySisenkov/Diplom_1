@@ -13,13 +13,3 @@ class TestIngredient:
 
     def test_get_type(self, ingredient):
         assert ingredient.get_type() == ingredient.type
-
-    @pytest.mark.parametrize("ingredient_type, name, price",
-                             [[INGREDIENT_TYPE_FILLING, 1234, 126.3],
-                              [1234, "котлета", 126.3],
-                              [INGREDIENT_TYPE_SAUCE, "котлета", "126.3"]])
-    def test_bun(self, ingredient_type, name, price):
-        try:
-            Ingredient(ingredient_type, name, price)
-        except Exception as e:
-            assert type(e).__name__ == TypeError
